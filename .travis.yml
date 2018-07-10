@@ -1,0 +1,29 @@
+language: node_js
+sudo: false
+node_js: '8'
+
+before_install:
+- echo "//registry.npmjs.org/:_authToken=\${TWILIO_FLEX_NPM_READ_TOKEN}" > .npmrc
+
+install:
+- npm install
+jobs:
+  include:
+  - stage: Run build
+    script: npm run build
+
+  - stage: Unit tests
+    script: npm test 
+
+stages:
+- name: Run build
+- name: Unit tests
+
+notifications:
+  slack:
+    secure: "i/1irE0oRM17JsHpiNlhs9GU4VWNv9eQBPzbRKzXPui+iIS6Fnun7LL0AbsJMoXfppysUaudksbFtFaR5eMxXRLxLszN4Hoyi8nzOANoiFAwXAdsfPPKUMcYFbp+SYfbjzHGtZm5b4ENgtJ9yUZAS/OUVbGPPMxdDOf+YqccUzG3AYthVguRcaDUz0W0uXEaVrALnfBz7VOwywEZtXXb1R5VZSwLYgPVv7eSxsv1c5u/htQS1a1AlOucSCxUnuv6NWWq6mczzd4TJ14XPZpsHUmY1PkYBKg9sFbPAhDTpxLIZlbwdCbTzwd5uIkMoyTmHwVcD6766uP+B31qCcJSqGQXQfpresi6DqbumNBmm+SH3N20nPp3bYNO1v6jT4lxs2RPL8yXN+YCP5I1T6XLSXsIRNKmlox4Hvr/oLeQFD5Kh0PHfjgmnxJX7gkK1wlfNpDC39rDvVbIRykSwM2w0R7ChuHuUvt9Clf8j/u9xJ28SoXq1oEyag6+RAPjzwPCUR0E5MqQJDKDrZ3ELRtSeHXJqrX3/9Eyw4yV+GgqIyiqefOAtQ5hyXrVe2glgYZ+kiLo5YVhdd2/KtH2fr2y6Zv8WHdH9lGiumzO0cmKAvK7zlhWdsITkeudQ/BgwHpQWFUZ6NOjCdnkeXi34G4ZPqE6wRhRwzNTOhxcM+XvsSk="
+  email:
+    recipients:
+    - flex-frontend@twilio.com
+    on_success: never
+    on_failure: always
