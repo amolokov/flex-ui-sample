@@ -4,7 +4,6 @@ var serviceBaseUrl = window.location.origin;
 
 var appConfig = {
   serviceBaseUrl: serviceBaseUrl  + "/",
-  startEngagementUrl: serviceBaseUrl + "/createchat",
   sso: {
       tokenizerUrl: serviceBaseUrl + "/tokenizer"
   }
