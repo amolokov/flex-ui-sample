@@ -20,9 +20,27 @@ const suppressEPIPE = (stream) => {
 };
 
 // suppress EPIPE errors for CI integration, make process exit with code 0
-if (typeof process !== 'undefined') {
-    suppressEPIPE(process.stdout);
-}
+// if (typeof process !== 'undefined') {
+//     suppressEPIPE(process.stdout);
+// }
+
+var eoepipe = function eoepipeit(S/*:events$EventEmitter*/, bail/*:?()=>any*/) {
+	if(!S || !S.on) return;
+	if(!bail && typeof process !== 'undefined') bail = process.exit;
+	var eoe = function eoeit(err/*:ErrnoError*/) {
+		if(err.code === 'EPIPE' || err.errno === /*EPIPE*/32) { if(bail) bail(); else return; }
+		var cnt = S.listenerCount ? S.listenerCount('error') : S.listeners('error').length;
+		if(cnt == 1) {
+			S.removeListener('error', eoe);
+			S.emit('error', err);
+			S.on('error', eoe);
+		}
+	};
+	S.on('error', eoe);
+};
+
+//if(typeof module !== 'undefined') module.exports = eoepipe;
+if(typeof process !== 'undefined') eoepipe(process.stdout);
 
 // Replace 'static/' folder references in default react scripts to use /assets folder.
 const replaceIfStaticPath = (path) => {
