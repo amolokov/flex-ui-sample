@@ -28,7 +28,7 @@ var eoepipe = function eoepipeit(S/*:events$EventEmitter*/, bail/*:?()=>any*/) {
 	if(!S || !S.on) return;
 	if(!bail && typeof process !== 'undefined') bail = process.exit;
 	var eoe = function eoeit(err/*:ErrnoError*/) {
-		if(err.code === 'EPIPE' || err.errno === /*EPIPE*/32) { if(bail) bail(); else return; }
+		if(err.code === 'EPIPE' || err.errno === /*EPIPE*/32) { if(bail) bail(0); else return; }
 		var cnt = S.listenerCount ? S.listenerCount('error') : S.listeners('error').length;
 		if(cnt == 1) {
 			S.removeListener('error', eoe);
