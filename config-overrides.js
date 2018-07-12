@@ -4,15 +4,15 @@ const STATICS_SEARCH = "static/";
 const suppressEPIPE = (stream) => {
     if (!stream) return;
     const onError = (err) => {
-        if (err.code === "EPIPE" || err.errno === /*EPIPE*/32) {
+        if (err.code === "EPIPE" || err.errno === 32/*EPIPE*/) {
             return process.exit(0);
         }
 
         const listenerCount = stream.listenerCount ? stream.listenerCount("error") : stream.listeners("error").length;
         if (listenerCount == 1) {
-            stream.removeListener('error', onError);
-            stream.emit('error', err);
-            stream.on('error', onError);
+            stream.removeListener("error", onError);
+            stream.emit("error", err);
+            stream.on("error", onError);
         }
     };
 
