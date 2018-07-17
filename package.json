@@ -1,11 +1,11 @@
 {
-  "name": "flex-ui-sample",
+  "name": "@twilio/flex-ui-sample",
   "version": "0.6.0",
   "private": true,
   "dependencies": {
     "@twilio/flex-ui": "^0.6.0",
-    "react": "16.3.1",
-    "react-dom": "16.3.1"
+    "react": "16.4.1",
+    "react-dom": "16.4.1"
   },
   "devDependencies": {
     "react-app-rewired": "1.5.2",
