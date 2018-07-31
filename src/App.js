@@ -25,7 +25,7 @@ class App extends React.Component {
     }
 
     if (error) {
-      return "Failed to initialize Flex";
+      console.error("Failed to initialize Flex", error);
     }
 
     return null;
