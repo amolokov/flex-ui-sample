@@ -1,15 +1,16 @@
 {
   "name": "@twilio/flex-ui-sample",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "private": true,
   "dependencies": {
-    "@twilio/flex-ui": "^0.6.0",
+    "@twilio/flex-ui": "^0.7.0",
     "react": "16.4.1",
     "react-dom": "16.4.1"
   },
   "devDependencies": {
     "react-app-rewired": "1.5.2",
-    "react-scripts": "2.0.0-next.3e165448"
+    "react-scripts": "2.0.0-next.3e165448",
+    "typescript": "2.9.2"
   },
   "scripts": {
     "start": "react-app-rewired start",
