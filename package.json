@@ -1,9 +1,9 @@
 {
   "name": "@twilio/flex-ui-sample",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "private": true,
   "dependencies": {
-    "@twilio/flex-ui": "^0.8.0",
+    "@twilio/flex-ui": "^0.9.0",
     "react": "16.4.1",
     "react-dom": "16.4.1"
   },
