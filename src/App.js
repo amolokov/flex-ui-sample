@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
 
     const { configuration } = props;
-    Flex.ContactCenterManager.create(undefined, configuration)
+    Flex.Manager.create(undefined, configuration)
       .then(manager => this.setState({ manager }))
       .catch(error => this.setState({ error }));
   }
