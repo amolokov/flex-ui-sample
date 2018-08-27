@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
 
     const { configuration } = props;
-    Flex.Manager.create(undefined, configuration)
+    Flex.Manager.create(configuration)
       .then(manager => this.setState({ manager }))
       .catch(error => this.setState({ error }));
   }
